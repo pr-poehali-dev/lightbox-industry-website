@@ -29,20 +29,56 @@ const Index = () => {
     {
       name: 'Brick Hall',
       description: 'Классический лофт с кирпичной кладкой и промышленными элементами',
-      image: 'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/638768bb-fd8e-4f86-b811-2a713005d020.jpg',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/835ddae8-51c1-430a-9829-a8698c9bd4d6.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/ef9df7cb-c7a9-49b3-b0ec-e7ff4d353744.jpg',
+      ],
       size: '80 м²',
     },
     {
       name: 'Metal Room',
       description: 'Индустриальное пространство со стальными конструкциями и бетоном',
-      image: 'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/57985d7f-e932-4e7e-9a4d-5756ee5619da.jpg',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/f429c6c3-e9cc-41d9-a680-3469ce4c0692.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/54527388-aef3-4f3b-9062-d5621ae3c7c2.jpg',
+      ],
       size: '60 м²',
     },
     {
       name: 'Classic Light',
       description: 'Универсальный зал с профессиональным световым оборудованием',
-      image: 'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/0d8b7dbc-7cee-473a-aa9a-9c437fc77bd0.jpg',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/7a24ddfe-1967-4876-a161-445e80586bcf.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/1c7907c5-ecec-4433-8a2e-5239f5318bc6.jpg',
+      ],
       size: '70 м²',
+    },
+    {
+      name: 'White Cyclorama',
+      description: 'Идеальный белый фон для коммерческой съёмки и каталогов',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/6df50637-1ceb-4729-a1b3-1834cb8dab96.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/0639f7cd-8194-42c4-afa7-1fa8bd990c55.jpg',
+      ],
+      size: '55 м²',
+    },
+    {
+      name: 'Vintage Studio',
+      description: 'Ретро-интерьер с винтажной мебелью и тёплым светом',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/c9184b4a-867b-4839-b702-9a49f520fe1d.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/3336c9c0-aa06-4602-9d18-a19a71de1dd4.jpg',
+      ],
+      size: '65 м²',
+    },
+    {
+      name: 'Dark Room',
+      description: 'Тёмное пространство с неоновыми акцентами для альтернативных съёмок',
+      images: [
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/828343c1-88fe-4a05-bf08-1d228f0dca98.jpg',
+        'https://cdn.poehali.dev/projects/d61ff87b-555e-4f0b-921d-5c999176d331/files/8d902fc4-9724-44f7-a9e1-0a3c54f6f283.jpg',
+      ],
+      size: '50 м²',
     },
   ];
 
@@ -135,7 +171,7 @@ const Index = () => {
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             LightBox — это креативное пространство в сердце индустриального района, где брутальность лофта сочетается
-            с профессиональным светом. Мы создали три уникальных зала, каждый со своим характером,
+            с профессиональным светом. Мы создали шесть уникальных залов, каждый со своим характером,
             чтобы вы могли воплотить любую творческую идею.
           </p>
         </div>
@@ -167,16 +203,21 @@ const Index = () => {
       <section id="studios" className="py-24 px-4" data-animate>
         <div className={`container mx-auto transition-all duration-700 ${isVisible['studios'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-5xl md:text-7xl font-bold mb-16 text-center text-primary">НАШИ ЗАЛЫ</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {studios.map((studio, idx) => (
               <Card key={idx} className="bg-concrete border-border hover:border-primary transition-all duration-300 overflow-hidden group">
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src={studio.image}
-                    alt={studio.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={studio.images[0]}
+                    alt={`${studio.name} - вид 1`}
+                    className="w-full h-full object-cover group-hover:opacity-0 transition-opacity duration-500"
                   />
-                  <div className="absolute top-4 right-4 bg-primary text-graphite px-3 py-1 text-sm font-bold">
+                  <img
+                    src={studio.images[1]}
+                    alt={`${studio.name} - вид 2`}
+                    className="w-full h-full object-cover absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  <div className="absolute top-4 right-4 bg-primary text-graphite px-3 py-1 text-sm font-bold z-10">
                     {studio.size}
                   </div>
                 </div>
